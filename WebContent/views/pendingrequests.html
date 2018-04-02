@@ -1,0 +1,39 @@
+<head>
+<style>
+ body {
+    background-image: url("resources/images/friend4.jpg");
+     background-repeat: no-repeat;
+       background-size: 100% 300%; 
+} 
+
+</style>
+</head>
+
+<div class="container">
+<br><br>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<b>Friend Requests</b>
+		</div>
+		<div class="panel-body">
+		<span ng-if="pendingRequests.length==0"><b>No pending requests!</b></span>
+			<ul style="list-style: none">
+			<!-- pendingRequests - List<Friend> -->
+			<!-- request is of type Friend -->
+			<!-- request has id,fromId,toId,status,firstname,lastname,phonenumber,online,role -->
+				<li ng-repeat="request in pendingRequests">
+				<b>{{request.fromId.email}}</b><br>
+				<b>{{request.fromId.firstname}} &nbsp; {{request.fromId.lastname}}</b><br>
+				<b>{{request.fromId.phonenumber}}</b><br>
+				<img src="http://localhost:8083/proj2middleware/getimage/{{request.fromId.email}}" alt="No image" height="40px" width="40px">
+				<br>
+				<!-- request object is fromId in friend table -->
+				<button type="button" class="btn btn-primary" ng-click="acceptRequest(request)">Accept</button>
+				<button type="button" class="btn btn-warning" ng-click="deleteRequest(request)">Delete</button>
+				<br>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+</div>

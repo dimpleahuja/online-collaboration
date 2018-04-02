@@ -1,0 +1,32 @@
+<span ng-if="suggestedUsers.length==0"><b>No suggested users</b></span>
+<head>
+<style>
+ body {
+    background-image: url("resources/images/friend2.jpg");
+     background-repeat: no-repeat;
+       background-size: 100% 300%; 
+} 
+
+</style>
+</head>
+
+<div class="container">
+<br><br>
+<table class="table table-striped">
+<!-- user is an object of type User -->
+<tr ng-repeat="user in suggestedUsers">
+<td>{{user.email}}<br>
+{{user.firstname}} &nbsp; {{user.lastname}}<br>
+<b>Phone Number :- </b>{{user.phonenumber}}
+</td>
+<td>
+<img src="http://localhost:8083/proj2middleware/getimage/{{user.email}}" alt="No image" height="40px" width="40px">
+</td>
+<td>
+<!-- value for toId property -->
+<button type="button" class="btn btn-primary" ng-click="addFriend(user)">Add Friend</button>
+</td>
+</tr>
+
+</table>
+</div>

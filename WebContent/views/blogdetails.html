@@ -1,0 +1,98 @@
+<head>
+<style>
+ body {
+    background-image: url("resources/images/blog3.jpg");
+     background-repeat: no-repeat;
+       background-size: 100% 185%; 
+} 
+
+</style>
+</head>
+
+
+<div class="container">
+<br>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		{{blog.blogTitle}}<br> <b>Posted On: </b> {{blog.postedOn |
+		date:'medium'}}<br> <b>Posted By: </b>
+		{{blog.postedBy.firstname}} &nbsp; {{blog.postedBy.lastname}}<br>
+		<img src="http://localhost:8083/proj2middleware/getimage/{{blog.postedBy.email}}" alt="" height="40px" width="40px">
+	</div>
+	<div class="panel-body">
+		<p ng-bind-html="content"></p>
+		<br>
+		<div>
+			<a><span class="glyphicon glyphicon-thumbs-up"
+				ng-class="isLiked?'liked':'default'" ng-click="updateLikes(blog.id)"></span></a>
+			{{blog.likes}} likes
+		</div>
+		<div>
+		{{exceptionMessage.message}}
+		<textarea rows="1" cols="10" ng-model="commentTxt"></textarea>
+		<button type="button" class="btn btn-primary" ng-click="addComment(blog,commentTxt)">Post Comment</button>
+		<br>
+		<a ng-click="onShowComments()">{{comments.length}} comments</a> <br>
+		<ul style="list-style:none" ng-show="showComments">
+		<li ng-repeat="comment in comments | orderBy:'-commentedOn'">
+		{{comment.commentTxt}} &nbsp;<b>Commented By</b> {{comment.commentedBy.firstname}} &nbsp;<b>Commented On</b> {{comment.commentedOn | date:'yyyy/MM/dd'}}
+		</li>
+		</ul>
+		</div>
+	</div>
+</div>
+</div>
+<!-- updateLikes(blog.id)
+insert into blogpostlikes values (?,blogpostid,email)
+update blogpost set likes = likes +1 where id =?
+
+   (or)
+delete from blogpostlikes where id=?
+update blogpost set likes = likes - 1 where id=?
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="panel panel-info">
+<div class="panel-heading">
+{{blog.blogTitle}}<br>
+<b>Posted On: </b> {{blog.postedOn | date:'medium'}}<br>
+<b>Posted By: </b> {{blog.postedBy.firstname}} &nbsp; {{blog.postedBy.lastname}}
+</div>
+<div class="panel-body">
+{{blog.blogContent}}
+</div>
+</div> -->
