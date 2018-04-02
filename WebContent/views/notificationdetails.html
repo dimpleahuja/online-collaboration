@@ -1,3 +1,15 @@
+
+<head>
+<style>
+ body {
+    background-image: url("resources/images/notification3.jpg");
+     background-repeat: no-repeat;
+       background-size: 100% 800%; 
+} 
+
+</style>
+</head>
+
 <div>
 BlogPost titled "<b>{{notification.blogTitle}}</b>" is {{notification.approvalStatus}}
  <div ng-show="notification.approvalStatus=='Rejected'">for the reason '{{notification.rejectionReason}}'</div>
